@@ -34,6 +34,9 @@ public class Fraction {
 
     @Override
     public String toString() {
+        if (denominator == 0) {
+            return "Fraction is wrong! Denominator can't equal 0";
+        }
         if (numerator == 0) {
             return "0";
         }

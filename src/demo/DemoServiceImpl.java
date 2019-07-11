@@ -36,35 +36,43 @@ public class DemoServiceImpl implements DemoService {
 
     private void simplifyFractions() {
         System.out.println("------ Simplifying fractions ------");
-        System.out.println("After simplifying " + fractionService.simplifying(fraction1) + " and " + fractionService.simplifying(fraction2));
+        Fraction simplifiedFraction1 = fractionService.simplifying(fraction1);
+        Fraction simplifiedFraction2 = fractionService.simplifying(fraction2);
+        System.out.println("After simplifying "
+                + (simplifiedFraction1 != null ? simplifiedFraction1 : "Something wrong happened during simplifying" + fraction1)
+                + " and " + (simplifiedFraction2 != null ? simplifiedFraction2 : "Something wrong happened during simplifying" + fraction2));
         System.out.println();
     }
 
     private void sumFractions() {
         System.out.println("------ Sum fractions ------");
         Fraction fractionResult = fractionService.sum(fraction1, fraction2);
-        System.out.println(fraction1 + " + " + fraction2 + " = " + fractionResult);
+        System.out.println(fraction1 + " + " + fraction2 + " = "
+                + (fractionResult != null ? fractionResult : "Can't be calculated"));
         System.out.println();
     }
 
     private void differenceFractions() {
         System.out.println("------ Difference fractions ------");
         Fraction fractionResult = fractionService.difference(fraction1, fraction2);
-        System.out.println(fraction1 + " - " + fraction2 + " = " + fractionResult);
+        System.out.println(fraction1 + " - " + fraction2 + " = "
+                + (fractionResult != null ? fractionResult : "Can't be calculated"));
         System.out.println();
     }
 
     private void multiplyFractions() {
         System.out.println("------ Multiplication fractions ------");
         Fraction fractionResult = fractionService.multiplication(fraction1, fraction2);
-        System.out.println(fraction1 + " * " + fraction2 + " = " + fractionResult);
+        System.out.println(fraction1 + " * " + fraction2 + " = "
+                + (fractionResult != null ? fractionResult : "Can't be calculated"));
         System.out.println();
     }
 
     private void divideFractions() {
         System.out.println("------ Dividing fractions ------");
-        Fraction fractionSum = fractionService.dividing(fraction1, fraction2);
-        System.out.println(fraction1 + " / " + fraction2 + " = " + fractionSum);
+        Fraction fractionResult = fractionService.dividing(fraction1, fraction2);
+        System.out.println(fraction1 + " / " + fraction2 + " = "
+                + (fractionResult != null ? fractionResult : "Can't be calculated"));
         System.out.println();
     }
 

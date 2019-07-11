@@ -9,6 +9,10 @@ public class FractionServiceImpl implements FractionService {
         int denominator = fraction.getDenominator();
         int comparing = Integer.compare(numerator, denominator);
 
+        if (denominator == 0) {
+            return null;
+        }
+
         if (comparing == 0) {
             return new Fraction(1, 1);
         } else if (comparing < 0) {
@@ -44,6 +48,10 @@ public class FractionServiceImpl implements FractionService {
 
     @Override
     public Fraction sum(Fraction fraction1, Fraction fraction2) {
+        if (fraction1.getDenominator() == 0 || fraction2.getDenominator() == 0) {
+            return null;
+        }
+
         if (fraction1.equals(fraction2)) {
             Fraction fraction = new Fraction(fraction1.getNumerator() * 2, fraction1.getDenominator());
             return simplifying(fraction);
@@ -58,6 +66,10 @@ public class FractionServiceImpl implements FractionService {
 
     @Override
     public Fraction difference(Fraction fraction1, Fraction fraction2) {
+        if (fraction1.getDenominator() == 0 || fraction2.getDenominator() == 0) {
+            return null;
+        }
+
         if (fraction1.equals(fraction2)) {
             return new Fraction(0, fraction1.getDenominator());
         } else {
@@ -70,6 +82,10 @@ public class FractionServiceImpl implements FractionService {
 
     @Override
     public Fraction multiplication(Fraction fraction1, Fraction fraction2) {
+        if (fraction1.getDenominator() == 0 || fraction2.getDenominator() == 0) {
+            return null;
+        }
+
         int newNumerator = fraction1.getNumerator() * fraction2.getNumerator();
         int newDenominator = fraction1.getDenominator() * fraction2.getDenominator();
         return simplifying(new Fraction(newNumerator, newDenominator));
@@ -77,6 +93,10 @@ public class FractionServiceImpl implements FractionService {
 
     @Override
     public Fraction dividing(Fraction fraction1, Fraction fraction2) {
+        if (fraction1.getDenominator() == 0 || fraction2.getDenominator() == 0) {
+            return null;
+        }
+
         if (fraction1.equals(fraction2)) {
             Fraction fraction = new Fraction(1, 1);
             return simplifying(fraction);
